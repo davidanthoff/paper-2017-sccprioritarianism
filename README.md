@@ -1,6 +1,8 @@
 # Replication code for Adler et al. (2017) "Priority for the worse off and the Social Cost of Carbon"
 
-This repository holds all code required to replicate the results of Adler et al. (2017).
+This repository holds all code required to replicate the results of:
+
+Adler, M., D. Anthoff, V. Bosetti, G. Garner, K. Keller and N. Treich (2017) "Priority for the worse off and the Social Cost of Carbon".
 
 ## Software requirements
 

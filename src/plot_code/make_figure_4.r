@@ -17,7 +17,7 @@ pdf(outfile, width=8, height=6)
 par(mfrow=c(2,2), mar=c(4.5,5,2.5,1)+0.1)
 
 # y-axis limits
-temp.ylims <- matrix(c(0,650,0,5500,0,850,0,1100), ncol=2, byrow=T)
+temp.ylims <- matrix(c(0,1100,0,5500,0,1100,0,1100), ncol=2, byrow=T)
 
 # Loop over the regions
 for(i in 1:length(norm.regions)) {

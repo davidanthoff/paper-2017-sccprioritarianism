@@ -31,7 +31,7 @@ for(i in 1:length(norm.regions)) {
                                       gamma <= 3.0 & gamma >= 0.0)),]
   
   # Generate the OAT plot for this run
-  temp.ylims <- matrix(c(0,250,1900,5200,0,900,0,1200), ncol=2, byrow=T)
+  temp.ylims <- matrix(c(0,250,1900,5200,0,1200,0,1200), ncol=2, byrow=T)
   make.oatplot(this.subset, make.legend=T, mar=c(4,4.5,1.5,1)+0.1, this.ylim = temp.ylims[i,])
   mtext(this.run, side=3, line=0.2, cex=1.0, font=2)
   

@@ -17,7 +17,7 @@ pdf(outfile, width=8, height=6)
 par(mfrow=c(2,2), mar=c(4.5,5,2.5,1)+0.1)
 
 # y-axis limits
-temp.ylims <- matrix(c(0,800,0,4000,0,800,0,800), ncol=2, byrow=T)
+temp.ylims <- matrix(c(0,650,0,5500,0,850,0,1100), ncol=2, byrow=T)
 
 # Loop over the regions
 for(i in 1:length(norm.regions)) {
@@ -47,7 +47,7 @@ for(i in 1:length(norm.regions)) {
   mtext(expression(paste("[2015 USD per ton ", CO[2], "]", sep="")), 2, line=2.5)
   lines(prior.subset$eta, prior.subset$SCC, col=line.cols[2])
   points(prior.subset$eta, prior.subset$SCC, pch=16, col=line.cols[2])
-  legend("top", legend=c("Disc. Utilitarian", "Undisc. Prioritarian"),
+  legend("topright", legend=c("Disc. Utilitarian", "Undisc. Prioritarian"),
          lty=1, pch=c(15,16), col=line.cols, bty="n")
   put.fig.letter(letters[i], font=2, cex=1.2, offset=c(0.01, -0.05))
   

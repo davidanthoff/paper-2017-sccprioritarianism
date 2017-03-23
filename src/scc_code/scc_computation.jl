@@ -9,6 +9,24 @@ end
 # 1. Run model and load data
 # ==========================
 
+# This function returns a matrix of marginal damages per one t of carbon emission in the
+# emissionyear parameter year.
+function getmarginaldamages_rice_consumption_based(;emissionyear=2005,datafile=joinpath(dirname(@__FILE__), "..", "data", "RICE_2010_base_000.xlsm"))
+    m1, m2 = RICE.getmarginal_rice_models(emissionyear=emissionyear, datafile=datafile)
+
+    run(m1)
+    run(m2)
+
+    c1 = m1[:neteconomy, :C]
+    c2 = m2[:neteconomy, :C]
+
+    # Calculate the marginal damage between run 1 and 2 for each
+    # year/region
+    marginaldamage = -(c2.-c1) .* 10^12 / 10^9 / 10
+
+    return marginaldamage
+end
+
 function getRICEdata()
     # Convert from $2005 to $2015
     # taken from http://www.bls.gov/data/inflation_calculator.htm
@@ -22,7 +40,7 @@ function getRICEdata()
 
     pop1 = m[:grosseconomy, :L] .* 10.^6
     cpc1 = m[:neteconomy, :CPC] .* 1000.
-    marginaldamage = RICE.getmarginaldamages_rice(emissionyear=2015, datafile=RICE_datafile)
+    marginaldamage = getmarginaldamages_rice_consumption_based(emissionyear=2015, datafile=RICE_datafile)
 
     # Interpolate missing years due to 10 year timestep
     marginaldamage = repeat(marginaldamage, inner=[10,1])
